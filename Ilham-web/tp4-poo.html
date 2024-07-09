@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tp 4</title>
+</head>
+
+<body>
+    <nav>
+
+        <ul>
+            <li><a href="tp1-poo.html">TP 1</a></li>
+            <li><a href="tp2-poo.html">TP 2</a></li>
+            <li><a href="tp3-poo.html">TP 3</a></li>
+            <li><a href="tp4-poo.html">TP 4</a></li>
+            <li><a href="tp5-poo.html">TP 5</a></li>
+        </ul>
+    </nav>
+    <div class="corr">la correction du premier controle </div>
+    <div class="Exe">
+        <div class="correction">
+            <pre>
+    <span class="rouge">#QCM:</span>
+
+    # 1-a
+    # 2-b
+    # 3-c
+    # 4-a
+    # 5-b
+    # 6-a
+</div></pre>
+            <div class="Exercice">
+                <pre>
+  from abc import ABC, abstractmethod
+
+    <span class="rouge">class Personne(ABC):</span>
+     <span class="blue">def __init__(self, nom_complet, CIN, age):</span>
+         self.nom_complet = nom_complet
+         self.CIN = CIN
+         self.age = age
+    
+    <span class="vert">@abstractmethod</span>
+     <span class="blue">def Afficher_detail(self):</span>
+         pass
+    
+     <span class="vert">@staticmethod</span>
+      <span class="blue">def liste_premiers(a, b):</span>
+         premiers = []
+         for n in range(a, b+1):
+             if n > 1:
+                 for i in range(2, n):
+                     if (n % i) == 0:
+                         break
+                 else:
+                     premiers.append(n)
+         <span class="vert">return premiers</span></div></pre>
+
+                <div class="Exercice">
+                    <pre>
+        <span class="vert">class Client(Personne):</span>
+         clients = 0
+        
+         <span class="blue">def __init__(self, nom_complet, CIN, age, id_client, budget):</span>
+             super().__init__(nom_complet, CIN, age)
+             self.id_client = id_client
+             self.budget = budget
+             Client.clients += 1
+        
+         <span class="vert">@classmethod</span>
+         <span class="blue">def afficher_clients(cls):</span>
+             <span class="rouge">print("Nombre total de clients :", cls.clients)</span>
+        
+         <span class="blue">def __add__(self, other):</span>
+             return self.budget + other.budget
+        
+         <span class="vert">@staticmethod</span>
+         def print_star(n):
+             for i in range(n, 0, -1):
+                 <span class="rouge">print('*' * i)</span></pre>
+
+                </div>
+                <div class="Exercice">
+                    <pre>
+    <span class="rouge">class Vendeur:</span>
+    nb_vendeurs = 0
+   
+    <span class="blue">def __init__(self, nom_complet, CIN, age, id_vendeur, salaire):</span>
+        self.nom_complet = nom_complet
+        self.CIN = CIN
+        self.age = age
+        self._id_vendeur = id_vendeur
+        self.__salaire = salaire
+        Vendeur.nb_vendeurs += 1
+   
+    <span class="vert">@classmethod</span>
+    <span class="blue">def afficher_nombre_total(cls):</span>
+        <span class="rouge">print("Nombre total de vendeurs :", cls.nb_vendeurs)</span>
+   
+    <span class="blue">def get_id_vendeur(self):</span>
+        return self._id_vendeur
+   
+    <span class="blue">def set_id_vendeur(self, value):</span>
+        self._id_vendeur = value
+   
+    <span class="blue">def get_salaire(self):</span>
+        return self.__salaire
+   
+    <span class="blue">def set_salaire(self, value):</span>
+        if value >= 0:
+            self.__salaire = value
+        else:
+            <span class="rouge">print("Salaire ne peut pas être négatif.")</span>
+   
+    <span class="blue">def Afficher_detail(self):</span>
+        <span class="rouge">print(f"Nom complet : {self.nom_complet}")</span>
+        <span class="rouge">print(f"CIN : {self.CIN}")</span>
+        <span class="rouge">print(f"Âge : {self.age}")</span>
+        <span class="rouge">print(f"ID vendeur : {self.get_id_vendeur()}")</span>
+        <span class="rouge">print(f"Salaire : {self.get_salaire()}")</span>
+        
+</pre>
+                </div>
+                <div class="Exercice">
+                    <pre>
+    <span class="rouge">class Produit:</span>
+    nb_produits = 0
+   
+    <span class="blue">def __init__(self, nom, prix):</span>
+        self.nom = nom
+        self.prix = prix
+        Produit.nb_produits += 1
+   
+    <span class="blue">def Afficher_detail(self):</span>
+        <span class="rouge">print(f"Nom : {self.nom}")</span>
+        <span class="rouge">print(f"Prix : {self.prix}")</span>
+   
+    <span class="vert">@classmethod</span>
+    <span class="blue">def afficher_nombre_total(cls):</span>
+        <span class="rouge">print("Nombre total de produits :", cls.nb_produits)</span>
+   
+    <span class="vert">@staticmethod</span>
+    <span class="blue">def sort_list(liste_produits):</span>
+        return sorted(set(liste_produits), key=lambda x: x.prix)
+        </pre>
+                </div>
+                <div class="Exercice">
+                    <pre>
+            <span class="rouge">class Vente:</span>
+            nb_ventes = 0
+           
+            <span class="blue">def __init__(self, id_vente, date_vente, vendeur, client, produits, prix_total_vente=0):</span>
+                self.id_vente = id_vente
+                self.date_vente = date_vente
+                self.vendeur = vendeur
+                self.client = client
+                self.produits = produits
+                self.prix_total_vente = prix_total_vente
+           
+            <span class="blue">def ajouter_produit(self, produit):</span>
+                self.produits.append(produit)
+                self.prix_total_vente += produit.prix
+           
+            <span class="blue">def afficher_details(self):</span>
+                <span class="rouge">print(f"ID vente : {self.id_vente}")</span>
+                <span class="rouge">print(f"Date vente : {self.date_vente}")</span>
+                <span class="rouge">print(f"Vendeur : {self.vendeur.nom_complet}")</span>
+                <span class="rouge">print(f"Client : {self.client.nom_complet}")</span>
+                <span class="rouge">print("Produits:")</span>
+                for produit in self.produits:
+                    produit.Afficher_detail()
+                <span class="rouge">print(f"Prix total de la vente : {self.prix_total_vente}")</span></pre>
+                </div>
+                <div class="Exercice">
+                    <pre> vendeur1 = Vendeur("Vendeur 1", "CIN-1", 30, 1234, 2000)
+                    client1 = Client("Client 1", "CIN-2", 25, 5678, 5000)
+                    produit1 = Produit("Produit 1", 100)
+                    produit2 = Produit("Produit 23", 200)
+                    produit3 = Produit("Produit 9", 100)
+                    <span class="rouge">print(produit1 == produit3)</span>
+                    vente1 = Vente(1, "2022-01-01", vendeur1, client1, [produit1, produit2])
+                    vente1.ajouter_produit(produit3)
+                    vente1.afficher_details()
+                    Produit.afficher_nombre_total()
+                    Vendeur.afficher_nombre_total()
+                        </pre>
+                </div>
+            </div>
+</body>
+
+</html>
+<style>
+    .Exercice {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        border: medium solid rgb(54, 67, 54);
+        border-radius: 40px;
+        padding: 2em;
+        margin: 5em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+    }
+
+    .correction {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:first baseline;
+        font-size: 20px;
+        border: medium solid rgb(54, 67, 54);
+        border-radius: 40px;
+        padding: 2em;
+        margin: 20em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+    }
+
+    nav ul {
+        list-style-type: none;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 10px;
+       
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #045744;
+        padding: 15px 40px;
+        transition: all 0.6s ease;
+        font-size: 17px;
+        background-color:#ADBC9F;
+        border: #ADBC9F;
+        border-radius: 20px;
+    }
+    .corr{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;border: medium solid #ADBC9F;
+        border-radius: 20px;
+        padding: 1em;
+        margin: 20em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+        background-color:beige;
+        color: #045744;
+    }
+    .blue {
+        color: blue;
+    }
+
+    .vert {
+        color: #045744;
+    }
+
+    .rouge {
+        color: red;
+    }
+</style>

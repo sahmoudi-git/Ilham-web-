@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tp1</title>
+</head>
+
+<body>
+    <div class="container">
+    <nav>
+        <ul>
+            <li><a href="tp1-poo.html" class="tp1">TP 1</a></li>
+            <li><a href="tp2-poo.html" class="tp2">TP 2</a></li>
+            <li><a href="tp3-poo.html" class="tp3">TP 3</a></li>
+            <li><a href="tp4-poo.html" class="tp4">TP 4</a></li>
+            <li><a href="tp5-poo.html" class="tp5">TP 5</a></li>
+        </ul>
+    </nav>
+</div>
+    <div class="Exe">
+        <div class="Exercice">
+            <pre><div class="rouge"> Exercice 1: Compréhension des Composantes d'une Classe</div>
+            <div class="vert">1. Définition d'une Classe et Attributs :</div>
+            
+            • Créez une classe Personne avec les attributs nom et age.
+            • Ajoutez un constructeur pour initialiser ces attributs.
+            • Implémentez une méthode pour afficher les détails de la personne.
+        
+            <div class="vert">2. Types de Données et Attributs de Classe :</div>
+            
+            • Ajoutez un attribut de classe population pour suivre le nombre total d'instances de la classe Personne.
+            • Mettez à jour le constructeur pour incrémenter le compteur de population à chaque nouvelle instance.
+            • Implémentez une méthode de classe pour afficher le nombre total de personnes.</pre>
+        </div>
+        <div class="correction">
+            <pre>            class <span class="rouge">Personne</span>:
+            population = 0
+
+            <span class="blue">def __init__(self, nom, age):</span>
+            self.nom = nom
+            self.age = age
+            Personne.population += 1
+
+            <span class="blue">def afficher_details(self):</span>
+            print(f"Nom: {self.nom}, Age: {self.age}")
+
+            <span class="vert">@classmethod</span>
+            <span class="blue">def afficher_population(cls):</span>
+            print(f"Population totale: {cls.population}")
+
+            pe1 = Personne("Wiam", 15)
+            pe2 = Personne("nour", 13)
+
+            pe1.afficher_details()
+            pe2.afficher_details()
+
+            <span class="rouge"> Personnes</span>.afficher_population()</pre>
+        </div>
+
+        <div class="Exercice">
+            <pre>   <span class="rouge">Exercice 2: Encapsulation et Modificateurs</span>
+
+            <span class="vert">1. Principe de l'Encapsulation :</span>
+            
+            • Ajoutez un attribut privé « __salaire » à la classe Personne.
+            • Implémentez des méthodes getters et setters pour accéder et modifier cet attribut.
+            
+            
+            <span class="vert">2. Modificateurs et Accesseurs :</span>
+            
+            • Ajoutez une méthode «Augmenter_salaire» qui permet d'augmenter le salaire d'une personne de manière sécurisée
+        </div></pre>
+            <div class="correction">
+                <pre>class <span class="rouge">Personne:</span>
+            population = 0
+                
+            <span class="blue">def __init__(self, nom, age, salaire):</span>
+                self.nom = nom
+                self.age = age
+                self.__salaire = salaire
+                Personne.population += 1
+                
+            <span class="blue">def afficher_details(self):</span>
+                print(f"Nom: {self.nom}, Age: {self.age}")
+                
+            <span class="blue">def get_salaire(self):</span>
+                return self.__salaire
+                
+            <span class="blue">def set_salaire(self, salaire):</span>
+                self.__salaire = salaire
+                
+            <span class="blue">def augmenter_salaire(self, montant):</span>
+                self.__salaire += montant
+                
+            <span class="vert">@classmethod</span>
+            def afficher_population(cls):
+                print(f"Population totale: {cls.population}")
+                
+        pe1 = Personne("wiam", 15, 7000)
+                
+        pe1.afficher_details()
+                
+            <span class="rouge">print(f"Salaire avant augmentation: {person.get_salaire()}")</span>
+        pe1.augmenter_salaire(500)
+            <span class="rouge">print(f"Salaire après augmentation: {person.get_salaire()}")</span></div></pre>
+                <div class="Exercice">
+                    <pre><span class="rouge">Exercice 3: Définition et Destruction d'un Objet</span>
+
+            <span class="vert">1. Définition d'un Objet et Instanciation :</span>
+            
+            • Créez une nouvelle classe Cours avec des attributs tels que nom,
+             professeur (instance de Personne), et etudiants (une liste d'instances de Personne).
+            • Ajoutez un constructeur pour initialiser ces attributs.
+            
+            
+            <span class="vert">2. Destruction Explicite d'un Objet :</span>
+            
+            • Ajoutez une méthode « quitter_cours » à la classe Personne qui permet à un étudiant de quitter un cours.</div></pre>
+        <div class="correction">
+                        <pre>             <span class="rouge">class Cours:</span>    
+                <span class="blue">def __init__(self, nom, professeur):</span>
+                self.nom = nom
+                self.professeur = professeur
+                self.etudiants = []
+                
+                <span class="blue">def ajouter_etudiant(self, etudiant):</span>
+                self.etudiants.append(etudiant)
+                
+                <span class="blue">def afficher_details(self):</span>
+                <span class="rouge">print(f"Cours: {self.nom}")</span>
+                <span class="rouge">print(f"Professeur: {self.professeur.nom}")</span>
+                <span class="rouge">print("Etudiants:")</span>
+                    for etudiant in self.etudiants:
+                        <span class="rouge">print(f"- {etudiant.nom}")</span>
+                
+            <span class="rouge">  class Personne:</span>
+                population = 0
+                
+                <span class="blue">def __init__(self, nom, age, salaire=0):</span>
+                    self.nom = nom
+                    self.age = age
+                    self.__salaire = salaire
+                    Personne.population += 1
+                
+                <span class="blue">def afficher_details(self):</span>
+                <span class="rouge">print(f"Nom: {self.nom}, Age: {self.age}")</span>
+                
+                <span class="blue">def get_salaire(self):</span>
+                return self.__salaire
+                
+                <span class="blue">def set_salaire(self, salaire):</span>
+                self.__salaire = salaire
+                
+                <span class="blue">def augmenter_salaire(self, montant):</span>
+                self.__salaire += montant
+                
+                <span class="blue">def quitter_cours(self, cours):</span>
+                if self in cours.etudiants:
+                    cours.etudiants.remove(self)
+                
+                <span class="vert">@classmethod</span>
+                <span class="blue">def afficher_population(cls):</span>
+                <span class="rouge">print(f"Population totale: {cls.population}")</span>
+                
+    
+                professeur = Personne("M.Ali", 30)
+                etudiant1 = Personne("salma", 20)
+                etudiant2 = Personne("adil", 25)
+                
+                cours = Cours("poo", professeur)
+                
+                cours.ajouter_etudiant(etudiant1)
+                cours.ajouter_etudiant(etudiant2)
+                
+                cours.afficher_details()
+                
+                etudiant1.quitter_cours(cours)
+                
+                cours.afficher_details()
+        </div></pre>
+        <div class="Exercice"><pre> <span class="rouge">          Exercice 4: Méthodes et Visibilité</span>
+
+            <span class="vert">1. Définition d'une Méthode et Visibilité :</span>
+            
+            • Ajoutez une méthode annoncer_cours à la classe Cours qui affiche les détails du cours, du professeur,et des étudiants.
+            
+            <span class="vert">2. Paramètres d'une Méthode et Méthodes de Classe :</span> 
+            
+            • Modifiez la méthode annoncer_cours pour accepter un paramètre facultatif permettant de filtrer les étudiants par âge.
+            • Ajoutez une méthode de classe cours_populaire à la classe Cours qui renvoie le cours avec le plus d'étudiants.
+            
+            <span class="vert">3. Fonctions Imbriquées :</span>
+            
+            • Ajoutez une fonction imbriquée à la méthode annoncer_cours qui affiche des informations spécifiques lorsque le cours 
+            est populaire (par exemple, plus de 10 étudiants).
+            
+            </div></pre>
+        <div class="correction"> <pre><span class="rouge">        class Cours:</span>
+            <span class="blue">def __init__(self, nom, professeur):</span>
+                self.nom = nom
+                self.professeur = professeur
+                self.etudiants = []
+            
+            <span class="blue">def ajouter_etudiant(self, etudiant):</span>
+                self.etudiants.append(etudiant)
+            
+            <span class="blue">def annoncer_cours(self):</span>
+                print(f"Cours: {self.nom}")
+                print(f"Professeur: {self.professeur.nom}")
+                print("Etudiants:")
+                for etudiant in self.etudiants:
+            <span class="rouge">   print(f"- {etudiant.nom}")</span>
+            
+            <span class="blue">def annoncer_cours_avec_filtre(self, age_minimum=None):</span>
+                print(f"Cours: {self.nom}")
+                print(f"Professeur: {self.professeur.nom}")
+                print("Etudiants:")
+                for etudiant in self.etudiants:
+                    if age_minimum is None or etudiant.age >= age_minimum:
+                <span class="rouge">print(f"- {etudiant.nom}")</span> 
+            
+            <span class="vert">@classmethod</span>
+            <span class="blue">def cours_populaire(cls, cours_list):</span>
+                span class="keyword">return max(cours_list, key=lambda c: len(c.etudiants))
+            
+        <span class="rouge">class Personne:</span>
+            population = 0
+            
+            <span class="blue">def __init__(self, nom, age, salaire=0):</span>
+                self.nom = nom
+                self.age = age
+                self.__salaire = salaire
+                Personne.population += 1
+            
+            <span class="blue">def afficher_details(self):</span>
+                <span class="rouge">print(f"Nom: {self.nom}, Age: {self.age}")</span>
+            
+            <span class="blue">def get_salaire(self):</span>
+                return self.__salaire
+            
+            <span class="blue">def set_salaire(self, salaire):</span>
+                self.__salaire = salaire
+            
+            <span class="blue">def augmenter_salaire(self, montant):</span>
+                self.__salaire += montant
+            
+            <span class="blue">def quitter_cours(self, cours):</span>
+                if self in cours.etudiants:
+                        cours.etudiants.remove(self)
+            
+            <span class="vert">@classmethod</span>
+            <span class="blue">def afficher_population(cls):</span>
+            <span class="rouge">print(f"Population totale: {cls.population}")</span>
+            
+            professeur = Personne("M.Ali", 30)
+            etudiant1 = Personne("salma", 20)
+            etudiant2 = Personne("adil", 25)
+            etudiant3 = Personne("hiba", 18)
+            
+            cours = Cours("poo", professeur)
+            
+            cours.ajouter_etudiant(etudiant1)
+            cours.ajouter_etudiant(etudiant2)
+            cours.ajouter_etudiant(etudiant3)
+            
+            cours.annoncer_cours_avec_filtre(age_minimum=21)
+            
+            cours2 = Cours("maths", professeur)
+            cours2.ajouter_etudiant(etudiant1)
+            cours_list = [cours, cours2]
+            cours_populaire = Cours.cours_populaire(cours_list)
+            <span class="rouge">print(f"Le cours le plus populaire est: {cours_populaire.nom}")</span></div></pre>
+    </div>
+</body>
+
+</html>
+<style>
+    .Exercice {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        border: medium solid rgb(54, 67, 54);
+        border-radius: 40px;
+        padding: 2em;
+        margin: 5em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+    }
+
+    .correction {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        border: medium solid rgb(23, 151, 23);
+        border-radius: 40px;
+        padding: 2em;
+        margin: 10em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+    }
+
+
+
+    nav ul {
+        list-style-type: none;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #045744;
+        padding: 15px 40px;
+        transition: all 0.6s ease;
+        font-size: 17px;
+        background-color:#ADBC9F;
+        border: #ADBC9F;
+        border-radius: 20px;
+    }
+
+    .blue {
+        color: blue;
+    }
+
+    .vert {
+        color: #045744;
+    }
+
+    .rouge {
+        color: red;
+    }
+    
+</style>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tp 3</title>
+</head>
+
+<body>
+    <nav>
+
+        <ul>
+            <li><a href="tp1-poo.html">TP 1</a></li>
+            <li><a href="tp2-poo.html">TP 2</a></li>
+            <li><a href="tp3-poo.html">TP 3</a></li>
+            <li><a href="tp4-poo.html">TP 4</a></li>
+            <li><a href="tp5-poo.html">TP 5</a></li>
+        </ul>
+    </nav>
+    <div class="Exe">
+        <div class="Exercice"><pre>
+            <span class="rouge">Exercice 1: Polymorphisme et Redéfinition des Méthodes</span>
+
+            <span class="vert">1. Définissez une classe abstraite Vehicule avec une méthode</span>
+            
+            <span class="vert">2. Créez des classes dérivées Voiture et Avion qui héritent de Vehicule.</span>
+            
+            <span class="vert">3. Redéfinissez la méthode deplacer() dans chaque classe dérivée pour afficher un message spécifique à chaque type de véhicule.</span>
+            
+            <span class="vert">4. Créez une méthode statique prime() qui prends en paramêtre un nombre entier positif et qui détermine s'il s'agit d'un 
+
+                nombre premier ou non</span>.</pre>
+
+        </div>
+        <div class="correction"><pre>
+            from abc import ABC, abstractmethod
+
+            <span class="vert">class Vehicule(ABC):</span>
+                <span class="vert">@abstractmethod</span>
+                <span class="blue">def deplacer(self):</span>
+                    pass
+            
+            <span class="vert">class Voiture(Vehicule):</span>
+                <span class="blue">def deplacer(self):</span>
+                    <span class="rouge">print("La voiture se déplace sur la route.")</span>
+            
+            <span class="vert">class Avion(Vehicule):</span>
+                <span class="blue">def deplacer(self):</span>
+                    <span class="rouge">print("L'avion vole dans le ciel.")</span>
+            
+                <span class="vert">@staticmethod</span>
+                <span class="blue">def prime(n):</span>
+                    if n < 2:
+                        return False
+                    for i in range(2, int(n**0.5) + 1):
+                        if n % i == 0:
+                            return False
+                    return True
+            
+            voiture = Voiture()
+            voiture.deplacer()
+            
+            avion = Avion()
+            avion.deplacer()
+            
+            <span class="rouge">print(Avion.prime(7))  </span>
+            <span class="rouge">print(Avion.prime(10)) </span>
+                
+        </div></pre>
+        <div class="Exercice"><pre>
+            <span class="rouge">Exercice 2: Surcharge des Opérateurs et Utilisation des Méthodes Abstraites</span>
+
+            <span class="vert">1. Définissez une classe abstraite Forme avec une méthode abstraite calculer_surface().</span>
+            
+            <span class="vert">2. Créez des classes dérivées Rectangle et Cercle qui héritent de Forme.</span>
+            
+            <span class="vert">3. Redéfinissez la méthode calculer_surface() dans chaque classe dérivée pour calculer la surface spécifique à chaque forme.</span>
+            
+            <span class="vert">4. Créez une méthode statique somme_aires() dans chaque classe dérivée qui renvoie la somme des surfaces de 2 formes.</span>
+            </div></pre>
+            <div class="Exercice"><pre>
+                from abc import ABC, abstractmethod
+                import math
+                
+                <span class="vert">class Forme(ABC):</span>
+                    <span class="vert">@abstractmethod</span>
+                    <span class="blue">def calculer_surface(self):</span>
+                        pass
+                
+                <span class="vert">class Rectangle(Forme):</span>
+                    <span class="blue">def __init__(self, largeur, longueur):</span>
+                        self.largeur = largeur
+                        self.longueur = longueur
+                
+                    <span class="blue">def calculer_surface(self):</span>
+                        return self.largeur * self.longueur
+                
+                    <span class="vert">@staticmethod</span>
+                    <span class="blue">def somme_aires(rect1, rect2):</span>
+                        return rect1.calculer_surface() + rect2.calculer_surface()
+                
+                <span class="vert">class Cercle(Forme):</span>
+                    <span class="blue">def __init__(self, rayon):</span>
+                        self.rayon = rayon
+                
+                    <span class="blue">def calculer_surface(self):</span>
+                        return math.pi * (self.rayon ** 2)
+                
+                    <span class="vert">@staticmethod</span>
+                    <span class="blue">def somme_aires(cerc1, cerc2):</span>
+                        return cerc1.calculer_surface() + cerc2.calculer_surface()
+                
+                rect1 = Rectangle(2, 3)
+                rect2 = Rectangle(4, 5)
+                <span class="rouge">print(rect1.calculer_surface()) </span> 
+                <span class="rouge">print(rect2.calculer_surface())</span>  
+                <span class="rouge">print(Rectangle.somme_aires(rect1, rect2))</span>  
+                
+                cerc1 = Cercle(3)
+                cerc2 = Cercle(4)
+                <span class="rouge">print(cerc1.calculer_surface())</span>  
+                <span class="rouge">print(cerc2.calculer_surface())</span>  
+                <span class="rouge">print(Cercle.somme_aires(cerc1, cerc2))</span> </pre>
+
+            </div>
+    </div>
+</body>
+
+</html>
+<style>
+    .Exercice {
+
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: 17px;
+border: medium solid rgb(54, 67, 54);
+border-radius: 40px;
+padding: 2em;
+margin: 5em;
+margin-top: 2em;
+margin-bottom: 2em;
+box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+}
+
+.correction {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: 17px;
+border: medium solid rgb(23, 151, 23);
+border-radius: 40px;
+padding: 2em;
+margin: 10em;
+margin-top: 2em;
+margin-bottom: 2em;
+box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+}
+nav ul {
+        list-style-type: none;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #045744;
+        padding: 15px 40px;
+        transition: all 0.6s ease;
+        font-size: 17px;
+        background-color:#ADBC9F;
+        border: #ADBC9F;
+        border-radius: 20px;
+    }
+    .blue {
+        color: blue;
+    }
+
+    .vert {
+        color: #045744;
+    }
+
+    .rouge {
+        color: red;
+    }
+</style>

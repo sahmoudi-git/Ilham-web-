@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tp 5</title>
+</head>
+
+<body>
+    <div>
+        <nav>
+
+            <ul>
+                <li><a href="tp1-poo.html">TP 1</a></li>
+                <li><a href="tp2-poo.html">TP 2</a></li>
+                <li><a href="tp3-poo.html">TP 3</a></li>
+                <li><a href="tp4-poo.html">TP 4</a></li>
+                <li><a href="tp5-poo.html">TP 5</a></li>
+            </ul>
+        </nav>
+        <div class="Exercice">
+            <pre>
+<span class="rouge">Exercice 1: Validation d'email et téléphone</span>
+
+<span class="vert">1. Validation d'une adresse e-mail :</span>
+
+Ecrire une fonction qui prend une adresse e-mail en entrée et utilise une expression régulière pour valider si elle est au format correct.
+
+
+<span class="vert">2. Extraction de numéros de téléphone :</span>
+
+Ecrire un script qui utilise des expressions régulières pour extraire tous les numéros de téléphone de la chaîne
+    </pre>
+        </div>
+        <div class="correction">
+            <pre>
+        <span class="rouge">#1\ email :</span>
+        import re
+        <span class="blue">def validate_email(email):</span>
+            email_regex =r"[a-zA-Z0-9\._\+-]+@[a-z0-9]+\.[a-z]+"
+            if re.match(email_regex, email):
+                <span class="vert">return True</span>
+            else:
+               <span class="vert">return False</span>
+        
+        <span class="rouge">#2\ phone :</span>
+        import re
+        <span class="blue">def valider_phone(phone):</span>
+            text = r"\+212|00212|0)(5|6|7|8)[0-9]{8}"
+            if re.match(text,phone):
+                 <span class="vert">return true</span>
+            else:
+                 <span class="vert">return false</span></pre>
+        </div>
+        <div class="Exercice">
+            <pre>                    
+                    <span class="rouge">Exercice 2: Mots interdits et validation des cartes</span>
+
+                    <span class="vert">1. Remplacement de mots interdits :</span>
+                    
+                    Ecrire un script qui utilise des expressions régulières pour remplacer tous les mots interdits par des astérisques (*)
+                     dans la chaîne de texte, <span class="blue">Exemple :.</span> « abcd », « efgh »
+                    
+                    
+                    <span class="vert">2. Validation d'un numéro de carte de crédit :</span>
+                    
+                    Créer une fonction qui valide un numéro de carte de crédit en utilisant une expression régulière pour vérifier si 
+                    le numéro suit un format valide.</pre>
+        </div>
+        <div class="correction">
+            <pre>
+                        <span class="rouge">#1\ mots interdits :</span>
+                        import re
+                        text ="ABCD FBTREBX CBUIBMJ KBPHGBR"
+                        nom =re.sub(r"B","*",text)
+                        <span class="rouge">print (nom)</span>
+                        
+                        <span class="rouge">#2\ carte de credit :</span>
+                        import re
+                        <span class="blue">def validate_credit_card(card_number):</span>
+                         card_regex = r'^(?:\d{4}[-\s]?){3}\d{4}$|^\d{16}$'
+                         if re.match(card_regex, card_number):
+                                <span class="vert">return True</span>
+                         else:
+                                <span class="vert">return False</span></pre>
+        </div>
+        <div class="Exercice">
+            <pre>
+                <span class="rouge">Exercice 3: Hashtag et force de mot de passe</span>
+
+                <span class="vert">1. Extraction de hashtags :</span>
+                
+                Ecrire un script qui utilise des expressions régulières pour extraire tous les hashtags d'une chaîne donnée.
+                
+                
+                <span class="vert">2. Vérification de la force d'un mot de passe :</span>
+                
+                Créez une fonction qui prend un mot de passe en entrée et utilise des expressions régulières pour vérifier s'il est 
+                suffisamment fort.
+                 <span class="blue">Par exemple,</span> s'il contient au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.div </div></pre>
+            <div class="correction">
+                <pre>
+                    <span class="rouge">#1\ hashtags :</span>
+                    import re
+                    <span class="blue">def extract_hashtags(text):</span>
+                        hashtag_regex = r'#\w+'
+                        hashtags = re.findall(hashtag_regex, text)
+                        <span class="vert">return hashtags</span>
+                    
+                    <span class="rouge">#2\ mot de passe:</span>
+                    import re
+                    <span class="blue">def check_password_strength(password):</span>
+                        uppercase_regex = r'[A-Z]'
+                        lowercase_regex = r'[a-z]'
+                        digit_regex = r'\d'
+                        special_char_regex = r'[!@#$%^&*(),.?":{}|<>]'
+                        if (
+                                len(password) >= 8 and
+                                re.search(uppercase_regex, password) and
+                                re.search(lowercase_regex, password) and
+                                re.search(digit_regex, password) and
+                                re.search(special_char_regex, password)
+                        ):
+                            <span class="vert">return True</span>
+                        else:
+                            <span class="vert">return False</span></pre>
+            </div>
+            <div class="Exercice">
+                <pre>
+                                <span class="rouge">Exercice 4: Validation d'URL et extraction HTML</span>
+
+                                <span class="vert">1. Validation d'une URL :</span>
+                                
+                                Ecrire un script qui utilise des expressions régulières pour valider si chaque URL d' une liste d'URL est 
+                                correctement formée.
+                                
+                                
+                                <span class="vert">2. Extraction de données HTML :</span>
+                                
+                                Ecrire un script qui utilise des expressions régulières pour extraire les balises < a > et leur contenu.</pre>
+            </div>
+            <div class="correction">
+                <pre>
+                                    <span class="rouge">#1\ URL:</span>
+                                    import re
+                                    <span class="blue">def validate_urls(url_list):</span>
+                                        regex = re.compile(r'(([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,})')
+                                        valid_urls = []
+                                        for url in url_list:
+                                            if regex.match(url):
+                                                valid_urls.append(url)
+                                            else:
+                                                valid_urls.append(None)
+                                        <span class="vert">return valid_urls</span>
+                                    
+                                    <span class="rouge">#2\ HTML :</span>
+                                    import re
+                                    <span class="blue">def extract_a_tags(html):</span>
+                                        regex = re.compile(r'<a\s+(?:[^>]*?\s+)?href="([^"]*)">(.*?)</a>', re.IGNORECASE)
+                                        <span class="vert">return regex.findall(html)</span></pre>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<style>
+    .Exercice {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        border: medium solid rgb(54, 67, 54);
+        border-radius: 40px;
+        padding: 2em;
+        margin: 5em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+    }
+
+    .correction {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        border: medium solid rgb(23, 151, 23);
+        border-radius: 40px;
+        padding: 2em;
+        margin: 10em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+    }
+
+    nav ul {
+        list-style-type: none;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #045744;
+        padding: 15px 40px;
+        transition: all 0.6s ease;
+        font-size: 17px;
+        background-color:#ADBC9F;
+        border: #ADBC9F;
+        border-radius: 20px;
+    }
+    .blue {
+        color: blue;
+    }
+
+    .vert {
+        color: #045744;
+    }
+
+    .rouge {
+        color: red;
+    }
+</style>

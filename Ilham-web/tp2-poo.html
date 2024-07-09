@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tp 2</title>
+</head>
+
+<body>
+    <nav>
+
+        <ul>
+            <li><a href="tp1-poo.html">TP 1</a></li>
+            <li><a href="tp2-poo.html">TP 2</a></li>
+            <li><a href="tp3-poo.html">TP 3</a></li>
+            <li><a href="tp4-poo.html">TP 4</a></li>
+            <li><a href="tp5-poo.html">TP 5</a></li>
+        </ul>
+    </nav>
+    <div class="Exe">
+        <div class="Exercice"><pre>
+            <span class="rouge">Exercice 1: Modélisation d'une Classe</span>
+
+            <span class="vert">1. Définissez une classe Produit avec les attributs nom, prix, et quantite_stock.</span>
+            
+            <span class="vert">2. Implémentez un constructeur pour initialiser ces attributs lors de la création d'une instance.</span>
+            
+            <span class="vert">3. Définissez une méthode afficher_details pour afficher les détails du produit.</pre></span>
+        </div>
+        <div class="correction">
+            <pre>
+    <span class="rouge">class Produit:</span>
+        <span class="blue">def __init__(self, nom, prix, quantite_stock):</span>
+            self.nom = nom
+            self.prix = prix
+            self.quantite_stock = quantite_stock
+    
+        <span class="blue">def afficher_details(self):</span>
+            <span class="rouge">print(f"Nom: {self.nom}, Prix: {self.prix} dh, Quantité en stock: {self.quantite_stock} kg")</span>
+    
+    produit = Produit("Pommes", 10, 15)
+    produit.afficher_details()</pre>
+        </div>
+        <div class="Exercice"><pre>
+<span class="rouge">Exercice 2: Principe de l'Encapsulation</span>
+
+<span class="vert">1. Encapsulez les attributs de la classe Produit en les définissant comme des attributs privés.</span>
+
+<span class="vert">2. Implémentez des méthodes getters et setters pour accéder et modifier les attributs de manière sécurisée</span></pre>
+        </div>
+        <div class="correction"><pre>
+    <span class="rouge">class Produit:</span>
+        <span class="blue">def __init__(self, nom, prix, quantite_stock):</span>
+            self.__nom = nom
+            self.__prix = prix
+            self.__quantite_stock = quantite_stock
+    
+        <span class="blue">def get_nom(self):</span>
+            return self.__nom
+    
+        <span class="blue">def set_nom(self, nom):</span>
+            self.__nom = nom
+    
+        <span class="blue">def get_prix(self):</span>
+            return self.__prix
+    
+        <span class="blue">def set_prix(self, prix):</span>
+            self.__prix = prix
+    
+        <span class="blue">def get_quantite_stock(self):</span>
+            return self.__quantite_stock
+    
+        <span class="blue">def set_quantite_stock(self, quantite_stock):</span>
+            self.__quantite_stock = quantite_stock
+    
+        <span class="blue">def afficher_details(self):</span>
+            <span class="rouge">print(f"Nom: {self.__nom}, Prix: {self.__prix} dh, Quantité en stock: {self.__quantite_stock} kg")</span>
+    
+    produit = Produit("Pommes", 10, 15)
+    produit.set_prix(12)
+    produit.afficher_details()
+        </div></pre>
+        <div class="Exercice"><pre>
+            <span class="rouge">Exercice 3: Principe de l'Héritage</span>
+
+            <span class="vert">1. Définissez une classe Aliment qui hérite de la classe Produit.</span>
+            
+            <span class="vert">2. Ajoutez un attribut date_peremption à la classe Aliment.</span>
+            
+            <span class="vert">3. Implémentez un constructeur pour initialiser cet attribut lors de la création d'une instance.</span></div></pre>
+        <div class="correction"> <pre>
+    <span class="rouge">class Produit:</span>
+            <span class="blue">def __init__(self, nom, prix, quantite_stock):</span>
+                self.nom = nom
+                self.prix = prix
+                self.quantite_stock = quantite_stock
+        
+            <span class="blue">def afficher_details(self):</span>
+                <span class="rouge">print(f"Nom: {self.nom}, Prix: {self.prix} dh, Quantité en stock: {self.quantite_stock}")</span>
+        
+        <span class="vert">class Aliment(Produit):</span>
+            <span class="blue">def __init__(self, nom, prix, quantite_stock, date_peremption):</span>
+                super().__init__(nom, prix, quantite_stock)
+                self.date_peremption = date_peremption
+        
+            <span class="blue">def afficher_details(self):</span>
+                super().afficher_details()
+                    <span class="rouge">print(f"Date de péremption: {self.date_peremption}")</span>
+        
+        aliment = Aliment("Lait", 4.5, 50, "2024-06-30")
+        aliment.afficher_details()</div>  </pre>  
+<div class="Exercice"><pre>
+    <span class="rouge">Exercice 4: Principe du Polymorphisme</span>
+
+    <span class="vert">1. Ajoutez une méthode calculer_prix_total à la classe Produit qui prend la quantité en paramètre et renvoie le prix total</span>
+
+    <span class="vert">2. Redéfinissez cette méthode dans la classe Aliment pour appliquer une réduction si la date de péremption est proche.</span>
+    </div></pre>
+    <div class="correction"><pre>
+    <span class="rouge">class Produit:</span>
+        <span class="blue">def __init__(self, nom, prix, quantite_stock):</span>
+            self.nom = nom
+            self.prix = prix
+            self.quantite_stock = quantite_stock
+    
+        <span class="blue">def calculer_prix_total(self, quantite):</span>
+            return self.prix * quantite
+    
+        <span class="blue">def afficher_details(self):</span>
+            <span class="rouge">print(f"Nom: {self.nom}, Prix: {self.prix}, Quantité en stock: {self.quantite_stock}")</span>
+    
+    <span class="vert">class Aliment(Produit):</span>
+        <span class="blue">def __init__(self, nom, prix, quantite_stock, date_peremption):</span>
+            super().__init__(nom, prix, quantite_stock)
+            self.date_peremption = date_peremption
+    
+        <span class="blue">def calculer_prix_total(self, quantite):</span>
+            reduction = 0.1 if self.date_peremption == "2024-06-30" 
+            return (self.prix * quantite) * (1 - reduction)
+    
+        <span class="blue">def afficher_details(self):</span>
+            super().afficher_details()
+                <span class="rouge">print(f"Date de péremption: {self.date_peremption}")</span>
+    
+    aliment = Aliment("Lait",4.5, 50, "2024-07-01")
+    aliment.afficher_details()
+    <span class="rouge">print(aliment.calculer_prix_total(10))</span></div></pre>
+    </div>
+</body>
+
+</html>
+<style>
+.Exercice {
+
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: 17px;
+border: medium solid rgb(54, 67, 54);
+border-radius: 40px;
+padding: 2em;
+margin: 5em;
+margin-top: 2em;
+margin-bottom: 2em;
+box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+}
+
+.correction {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: 17px;
+border: medium solid rgb(23, 151, 23);
+border-radius: 40px;
+padding: 2em;
+margin: 10em;
+margin-top: 2em;
+margin-bottom: 2em;
+box-shadow: rgba(148, 71, 71, 0.571) 5px 15px 15px;
+}
+nav ul {
+        list-style-type: none;
+        text-align: center;
+        margin-top: 50px;
+        
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 10px;
+        
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #045744;
+        padding: 15px 40px;
+        transition: all 0.6s ease;
+        font-size: 17px;
+        background-color:#ADBC9F;
+        border: #ADBC9F;
+        border-radius: 20px;
+    }
+    .blue {
+        color: blue;
+    }
+
+    .vert {
+        color: #045744;
+    }
+
+    .rouge {
+        color: red;
+    }
+</style>

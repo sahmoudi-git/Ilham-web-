@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remerciement</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">SH-WEB</div>
+            <ul>
+                <li><a href="website.html">Accueil..</a></li>
+                <li><a href="travaux.html">Travaux Pratiques..</a></li>
+                <li><a href="rapport.html">Rapports..</a></li>
+                <li><a href="remerciement.html">Remerciement..</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="div">
+        
+        
+        <pre><h1>                                 Merci à vous, nos chers visiteurs !     <br>       
+                         C'est grâce à vous, nos précieux utilisateurs,<br>
+            que nous pouvons continuer à développer et améliorer nos services.!</h1></pre>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(#12372A, #436851, #ADBC9F);
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #fffdfd88;
+        padding: 20px 0;
+        z-index: 1000;
+        /* ensure it's above other content */
+    }
+    nav ul {
+        list-style-type: none;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 10px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #045744;
+        padding: 15px 20px;
+        transition: all 0.6s ease;
+        font-size: 17px; 
+    }
+
+    nav ul li a:hover {
+        color: #0c0c0c;
+        transform: scale(1.2);
+    }
+a::before{
+    content: "";
+    position:absolute;
+    background-color: rgb(58, 91, 91);
+    height: 3px;
+    width: 0;
+    bottom: 10px;
+    transition: 0.3s;
+}
+a:hover::before{
+    width: 100px;
+}
+
+   
+
+    .div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .div :hover {
+        color: #436851;
+    }
+
+    h1 {
+        margin-bottom: 40px;
+        color: #ADBC9F;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .logo {
+        font-size: 20px;
+        color: #12372A;
+        text-shadow: 5px 5px 3px #0c0c0c;
+        font-family: 'Courier New', Courier, monospace;
+        margin-left: 10ch;
+        margin-top: 10px;
+
+    }
+</style>
